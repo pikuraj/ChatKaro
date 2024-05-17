@@ -116,6 +116,7 @@ app.post('/register', async (req,res) => {
     jwt.sign({userId:createdUser._id,username}, jwtSecret, {}, (err, token) => {
       if (err){ 
         console.log("Error in registering");
+        // WILL THROW AN ERROR IF REGISTRATION FAILS....
         throw err;
       }
       res.cookie('token', token, {sameSite:'none', secure:true}).status(201).json({
